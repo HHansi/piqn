@@ -11,7 +11,11 @@ scipy==1.5.4
 spacy==2.3.4
 tensorboard==2.4.0
 tokenizers==0.9.3
-torch==1.7.1
+# torch==1.7.1
+# conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=11.0 -c pytorch
 TorchSnooper==0.8
 tqdm==4.54.0
 transformers==3.5.1
+
+# pip install protobuf==3.19.4
+# pip install markupsafe==2.0.1

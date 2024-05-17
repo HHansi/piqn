@@ -36,9 +36,12 @@ if __name__ == '__main__':
     arg_parser.add_argument('mode', type=str, help="Mode: 'train' or 'eval'")
     args, _ = arg_parser.parse_known_args()
 
+    print(args.mode)
+
     if args.mode == 'train':
         _train()
     elif args.mode == 'eval':
         _eval()
     else:
         raise Exception("Mode not in ['train', 'eval'], e.g. 'python piqn.py train ...'")
+

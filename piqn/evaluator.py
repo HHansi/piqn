@@ -1,4 +1,7 @@
 from enum import unique
+
+import torch
+
 from .entities import Token
 import json
 import os

@@ -220,8 +220,12 @@ class JsonInputReader(BaseInputReader):
         jpos = None
         if 'pos' in doc:
             jpos = doc['pos']
-        ltokens = doc["ltokens"]
-        rtokens = doc["rtokens"]
+        ltokens = []
+        if "ltokens" in doc:
+            ltokens = doc["ltokens"]
+        rtokens = []
+        if "rtokens" in doc:
+            rtokens = doc["rtokens"]
 
         if not jpos:
             jpos = ["<UNK>"] * len(doc['tokens'])

@@ -7,10 +7,15 @@ from torch import nn as nn
 from torch.nn import functional as F
 from torch._C import device, dtype
 from transformers import BertConfig, BertModel, BertPreTrainedModel
+# from transformers.modeling_bert import BertEmbeddings
 from transformers.modeling_utils import PreTrainedModel
-from transformers.models.bert.modeling_bert import BertEmbeddings, BertOutput, BertLayer, BertOnlyMLMHead
-from transformers.models.roberta.modeling_roberta import RobertaConfig, RobertaEmbeddings, RobertaPreTrainedModel, RobertaLMHead
+# from transformers.models.bert.modeling_bert import BertEmbeddings, BertOutput, BertLayer, BertOnlyMLMHead
+# from transformers.models.roberta.modeling_roberta import RobertaConfig, RobertaEmbeddings, RobertaPreTrainedModel, RobertaLMHead
+from transformers.modeling_bert import BertEmbeddings, BertOutput, BertLayer, BertOnlyMLMHead
+from transformers.modeling_roberta import RobertaConfig, RobertaEmbeddings, RobertaPreTrainedModel, RobertaLMHead
 from transformers.activations import ACT2FN
+
+
 
 from piqn import sampling
 from piqn import util

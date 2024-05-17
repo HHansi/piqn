@@ -4,6 +4,7 @@ from collections import defaultdict
 import json
 import math
 import os
+import logging
 import gc
 
 import torch
@@ -29,6 +30,8 @@ from torch.optim.lr_scheduler import LambdaLR
 
 SCRIPT_PATH = os.path.dirname(os.path.realpath(__file__))
 
+logger = logging.getLogger(__name__)
+
 
 def get_linear_schedule_with_warmup_two_stage(optimizer, num_warmup_steps_stage_one, num_training_steps_stage_one, num_warmup_steps_stage_two, num_training_steps_stage_two,  last_epoch=-1):
     def lr_lambda(current_step: int):
@@ -53,7 +56,7 @@ class PIQNTrainer(BaseTrainer):
     def __init__(self, args: argparse.Namespace):
         super().__init__(args)
         self._tokenizer = AutoTokenizer.from_pretrained(args.tokenizer_path,
-                                                    local_files_only = True,
+                                                    local_files_only = False,
                                                     use_fast = False,
                                                     do_lower_case=args.lowercase,
                                                     cache_dir=args.cache_path)
@@ -134,6 +137,9 @@ class PIQNTrainer(BaseTrainer):
     def train(self, train_path: str, valid_path: str, types_path: str, input_reader_cls: BaseInputReader):
         args = self.args
         train_label, valid_label = 'train', 'valid'
+
+        print(self.record)
+        logger.info(f'record: {self.record}')
 
         if self.record:
             self._logger.info("Datasets: %s, %s" % (train_path, valid_path))
