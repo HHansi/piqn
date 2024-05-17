@@ -5,10 +5,13 @@ import re
 import time
 import random
 import json
-import pynvml
+# import pynvml
 import numpy as np
+from pynvml import nvmlInit
 
-pynvml.nvmlInit()
+# pynvml.nvmlInit()
+nvmlInit()
+
 
 def process_configs(target, arg_parser):
     args, _ = arg_parser.parse_known_args()
@@ -18,7 +21,8 @@ def process_configs(target, arg_parser):
     if "ALL_GPU" in os.environ:
         all_gpu_queue = list(map(int, os.environ["ALL_GPU"].split(",")))
     else:
-        all_gpu_queue = [0, 1, 2, 3, 4, 5, 6, 7]
+        # all_gpu_queue = [0, 1, 2, 3, 4, 5, 6, 7]
+        all_gpu_queue = [0]
     gpu_queue = []
     waittime = 240
     gpu_just_used = []
